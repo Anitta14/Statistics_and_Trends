@@ -5,7 +5,8 @@ import seaborn as sns
 
 
 def plot_relational_plot(df):
-    "scatter plot showing the relationship between vote_count and vote_average."
+    "Creates a scatter plot of vote_count vs. vote_average."
+
     fig, ax = plt.subplots(figsize=(10, 6))
 
     if 'vote_count' in df.columns and 'vote_average' in df.columns:
@@ -80,7 +81,7 @@ def statistical_analysis(df, col: str):
 
 
 def preprocessing(df):
-    "reprocesses dataset,displaying summary statistics and handling missing values."
+    """Preprocesses dataset by displaying summary stats and handling missing values."""
     # Keep only numeric columns
     numeric_df = df.select_dtypes(include=['number'])  
     print(numeric_df.describe())
