@@ -4,6 +4,7 @@ import scipy.stats as ss
 import seaborn as sns
 
 def plot_relational_plot(df):
+
     """Creates a scatter plot showing the relationship between vote_count and vote_average."""
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -21,6 +22,7 @@ def plot_relational_plot(df):
         print("Error: Required columns for relational plot not found.")
 
     return
+
 
 def plot_categorical_plot(df):
     """Creates a bar plot showing the average vote_average for each original_language."""
