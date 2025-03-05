@@ -4,13 +4,14 @@ import scipy.stats as ss
 import seaborn as sns
 
 
+
 def plot_relational_plot(df):
     """
     Creates a scatter plot showing the relationship between
     vote_count and vote_average.
     """
     fig, ax = plt.subplots(figsize=(10, 6))
-    
+
     if 'vote_count' in df.columns and 'vote_average' in df.columns:
         sns.scatterplot(
             x=df['vote_count'], y=df['vote_average'], alpha=0.5, ax=ax
@@ -23,8 +24,9 @@ def plot_relational_plot(df):
         plt.savefig('relational_plot.png')
     else:
         print("Error: Required columns for relational plot not found.")
-    
+
     return
+
 
 
 def plot_categorical_plot(df):
@@ -33,7 +35,7 @@ def plot_categorical_plot(df):
     each original_language.
     """
     fig, ax = plt.subplots(figsize=(10, 6))
-    
+
     if 'original_language' in df.columns and 'vote_average' in df.columns:
         lang_avg = (
             df.groupby('original_language')['vote_average']
@@ -49,8 +51,9 @@ def plot_categorical_plot(df):
         plt.savefig('categorical_plot.png')
     else:
         print("Error: Required columns for categorical plot not found.")
-    
+
     return
+
 
 
 def plot_statistical_plot(df):
@@ -58,7 +61,7 @@ def plot_statistical_plot(df):
     Creates a box plot for vote_average to analyze its distribution.
     """
     fig, ax = plt.subplots(figsize=(10, 6))
-    
+
     if 'vote_average' in df.columns:
         sns.boxplot(x=df['vote_average'], ax=ax)
         ax.set_xlabel("Vote Average", fontsize=12)
@@ -67,8 +70,9 @@ def plot_statistical_plot(df):
         plt.savefig('statistical_plot.png')
     else:
         print("Error: Required column for statistical plot not found.")
-    
+
     return
+
 
 
 def statistical_analysis(df, col: str):
@@ -86,6 +90,7 @@ def statistical_analysis(df, col: str):
         return None, None, None, None
 
 
+
 def preprocessing(df):
     """
     Preprocesses the dataset by displaying summary statistics
@@ -96,8 +101,9 @@ def preprocessing(df):
     print(numeric_df.head())
     print(numeric_df.corr())
     df = df.dropna()  # Remove rows with missing values
-    
+
     return df
+
 
 
 def writing(moments, col):
@@ -124,8 +130,9 @@ def writing(moments, col):
             ("platykurtic" if moments[3] < 0 else "mesokurtic")
         )
         print(f'The data was {skew_desc} and {kurtosis_desc}.')
-    
+
     return
+
 
 
 def main():
@@ -145,7 +152,7 @@ def main():
         )
     except Exception as e:
         print(f"Unexpected error: {e}")
-    
+
     return
 
 
