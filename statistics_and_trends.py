@@ -4,7 +4,7 @@ import scipy.stats as ss
 import seaborn as sns
 
 def plot_relational_plot(df):
-"Creates a scatter plot showing the relationship between vote_count and vote_average."
+    """Creates a scatter plot showing the relationship between vote_count and vote_average."""
     fig, ax = plt.subplots(figsize=(10, 6))
 
     if 'vote_count' in df.columns and 'vote_average' in df.columns:
@@ -22,9 +22,8 @@ def plot_relational_plot(df):
 
     return
 
-
 def plot_categorical_plot(df):
-"Creates a bar plot showing the average vote_average for each original_language."
+    """Creates a bar plot showing the average vote_average for each original_language."""
     fig, ax = plt.subplots(figsize=(10, 6))
 
     if 'original_language' in df.columns and 'vote_average' in df.columns:
@@ -45,10 +44,8 @@ def plot_categorical_plot(df):
 
     return
 
-
-
 def plot_statistical_plot(df):
-"Creates a box plot for vote_average to analyze its distribution."
+    """Creates a box plot for vote_average to analyze its distribution."""
     fig, ax = plt.subplots(figsize=(10, 6))
 
     if 'vote_average' in df.columns:
@@ -62,10 +59,8 @@ def plot_statistical_plot(df):
 
     return
 
-
-
 def statistical_analysis(df, col: str):
-   "Computes the four main statistical moments for the given column."
+    """Computes the four main statistical moments for the given column."""
     if col in df.columns:
         mean = df[col].mean()
         stddev = df[col].std()
@@ -76,10 +71,8 @@ def statistical_analysis(df, col: str):
         print(f"Error: Column {col} not found in the dataset.")
         return None, None, None, None
 
-
-
 def preprocessing(df):
-"Preprocesses the dataset by displaying summary statistics and handling missing values."
+    """Preprocesses the dataset by displaying summary statistics and handling missing values."""
     numeric_df = df.select_dtypes(include=['number'])  # Keep only numeric columns
     print(numeric_df.describe())
     print(numeric_df.head())
@@ -88,10 +81,8 @@ def preprocessing(df):
 
     return df
 
-
-
 def writing(moments, col):
-    "Prints the statistical moments and interpretation for the selected column."
+    """Prints the statistical moments and interpretation for the selected column."""
     if None not in moments:
         print(f'For the attribute {col}:')
         print(
@@ -114,8 +105,6 @@ def writing(moments, col):
 
     return
 
-
-
 def main():
     try:
         df = pd.read_csv('data.csv')
@@ -135,7 +124,6 @@ def main():
         print(f"Unexpected error: {e}")
 
     return
-
 
 if __name__ == '__main__':
     main()
