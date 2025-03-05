@@ -79,8 +79,7 @@ def statistical_analysis(df, col: str):
 
 
 def preprocessing(df):
-"Preprocesses the dataset by displaying summary statistics
-    and handling missing values."
+"Preprocesses the dataset by displaying summary statistics and handling missing values."
     numeric_df = df.select_dtypes(include=['number'])  # Keep only numeric columns
     print(numeric_df.describe())
     print(numeric_df.head())
