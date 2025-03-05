@@ -5,9 +5,7 @@ import seaborn as sns
 
 
 def plot_relational_plot(df):
-    """
-    Creates a scatter plot showing the relationship between vote_count and vote_average.
-    """
+    "Creates a scatter plot showing the relationship between vote_count and vote_average."
     fig, ax = plt.subplots()
     sns.scatterplot(x=df['vote_count'], y=df['vote_average'], alpha=0.5, ax=ax)
     ax.set_xlabel("Vote Count")
@@ -19,9 +17,7 @@ def plot_relational_plot(df):
 
 
 def plot_categorical_plot(df):
-    """
-    Creates a bar plot showing the average vote_average for each original_language.
-    """
+    "Creates a bar plot showing the average vote_average for each original_language."
     fig, ax = plt.subplots()
     lang_avg = df.groupby('original_language')['vote_average'].mean().sort_values()
     lang_avg.plot(kind='bar', ax=ax)
@@ -35,9 +31,7 @@ def plot_categorical_plot(df):
 
 
 def plot_statistical_plot(df):
-    """
-    Creates a box plot for vote_average to analyze its distribution.
-    """
+ "Creates a box plot for vote_average to analyze its distribution."
     fig, ax = plt.subplots()
     sns.boxplot(x=df['vote_average'], ax=ax)
     ax.set_xlabel("Vote Average")
@@ -48,9 +42,7 @@ def plot_statistical_plot(df):
 
 
 def statistical_analysis(df, col: str):
-    """
-    Computes the four main statistical moments for the given column.
-    """
+ "Computes the four main statistical moments for the given column."
     mean = df[col].mean()
     stddev = df[col].std()
     skew = ss.skew(df[col], nan_policy='omit')
@@ -60,9 +52,7 @@ def statistical_analysis(df, col: str):
 
 
 def preprocessing(df):
-    """
-    Preprocesses the dataset by displaying summary statistics and handling missing values.
-    """
+   "Preprocesses the dataset by displaying summary statistics and handling missing values."
     print(df.describe())
     print(df.head())
     print(df.corr())
@@ -72,9 +62,7 @@ def preprocessing(df):
 
 
 def writing(moments, col):
-    """
-    Prints the statistical moments and interpretation for the selected column.
-    """
+"Prints the statistical moments and interpretation for the selected column."
     print(f'For the attribute {col}:')
     print(f'Mean = {moments[0]:.2f}, Standard Deviation = {moments[1]:.2f},')
     print(f'Skewness = {moments[2]:.2f}, Excess Kurtosis = {moments[3]:.2f}.')
