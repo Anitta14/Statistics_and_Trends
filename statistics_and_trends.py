@@ -1,12 +1,13 @@
-from corner import corner
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import scipy.stats as ss
 import seaborn as sns
 
+
 def plot_relational_plot(df):
-    "Creates a scatter plot showing the relationship between vote_count and vote_average."
+    """
+    Creates a scatter plot showing the relationship between vote_count and vote_average.
+    """
     fig, ax = plt.subplots()
     sns.scatterplot(x=df['vote_count'], y=df['vote_average'], alpha=0.5, ax=ax)
     ax.set_xlabel("Vote Count")
@@ -15,8 +16,12 @@ def plot_relational_plot(df):
     plt.savefig('relational_plot.png')
     return
 
+
+
 def plot_categorical_plot(df):
-    "Creates a bar plot showing the average vote_average for each original_language."
+    """
+    Creates a bar plot showing the average vote_average for each original_language.
+    """
     fig, ax = plt.subplots()
     lang_avg = df.groupby('original_language')['vote_average'].mean().sort_values()
     lang_avg.plot(kind='bar', ax=ax)
@@ -26,6 +31,8 @@ def plot_categorical_plot(df):
     plt.xticks(rotation=45)
     plt.savefig('categorical_plot.png')
     return
+
+
 
 def plot_statistical_plot(df):
     """
@@ -38,6 +45,8 @@ def plot_statistical_plot(df):
     plt.savefig('statistical_plot.png')
     return
 
+
+
 def statistical_analysis(df, col: str):
     """
     Computes the four main statistical moments for the given column.
@@ -47,6 +56,8 @@ def statistical_analysis(df, col: str):
     skew = ss.skew(df[col], nan_policy='omit')
     excess_kurtosis = ss.kurtosis(df[col], nan_policy='omit')
     return mean, stddev, skew, excess_kurtosis
+
+
 
 def preprocessing(df):
     """
@@ -58,20 +69,21 @@ def preprocessing(df):
     df = df.dropna()  # Remove rows with missing values
     return df
 
+
+
 def writing(moments, col):
     """
     Prints the statistical moments and interpretation for the selected column.
     """
     print(f'For the attribute {col}:')
-    print(f'Mean = {moments[0]:.2f}, '
-          f'Standard Deviation = {moments[1]:.2f}, '
-          f'Skewness = {moments[2]:.2f}, and '
-          f'Excess Kurtosis = {moments[3]:.2f}.')
-    # Interpretation of skewness and kurtosis
+    print(f'Mean = {moments[0]:.2f}, Standard Deviation = {moments[1]:.2f}, ')
+    print(f'Skewness = {moments[2]:.2f}, Excess Kurtosis = {moments[3]:.2f}.')
     skew_desc = "right skewed" if moments[2] > 0 else "left skewed" if moments[2] < 0 else "not skewed"
     kurtosis_desc = "leptokurtic" if moments[3] > 0 else "platykurtic" if moments[3] < 0 else "mesokurtic"
     print(f'The data was {skew_desc} and {kurtosis_desc}.')
     return
+
+
 
 def main():
     try:
@@ -88,6 +100,7 @@ def main():
     except KeyError as e:
         print(f"Error: Column {e} not found in the dataset. Please check the column names.")
     return
+
 
 if __name__ == '__main__':
     main()
