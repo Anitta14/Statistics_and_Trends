@@ -5,7 +5,7 @@ import seaborn as sns
 
 
 def plot_relational_plot(df):
-    """Creates a scatter plot showing the relationship between vote_count and vote_average."""
+    "Creates a scatter plot showing the relationship between vote_count and vote_average."
     fig, ax = plt.subplots(figsize=(10, 6))
 
     if 'vote_count' in df.columns and 'vote_average' in df.columns:
@@ -26,7 +26,7 @@ def plot_relational_plot(df):
 
 
 def plot_categorical_plot(df):
-    """Creates a bar plot showing the average vote_average for each original_language."""
+    "Creates a bar plot showing the average vote_average for each original_language."
     fig, ax = plt.subplots(figsize=(10, 6))
 
     if 'original_language' in df.columns and 'vote_average' in df.columns:
@@ -67,7 +67,7 @@ def plot_statistical_plot(df):
 
 
 def statistical_analysis(df, col: str):
-    """Computes the four main statistical moments for the given column."""
+    "Computes the four main statistical moments for the given column."
     if col in df.columns:
         mean = df[col].mean()
         stddev = df[col].std()
@@ -80,8 +80,9 @@ def statistical_analysis(df, col: str):
 
 
 def preprocessing(df):
-    """Preprocesses the dataset by displaying summary statistics and handling missing values."""
-    numeric_df = df.select_dtypes(include=['number'])  # Keep only numeric columns
+    "reprocesses the dataset by displaying summary statistics and handling missing values."
+    # Keep only numeric columns
+    numeric_df = df.select_dtypes(include=['number'])  
     print(numeric_df.describe())
     print(numeric_df.head())
     print(numeric_df.corr())
@@ -90,7 +91,7 @@ def preprocessing(df):
 
 
 def writing(moments, col):
-    """Prints the statistical moments and interpretation for the selected column."""
+    "Prints the statistical moments and interpretation for the selected column."
     if None not in moments:
         print(f'For the attribute {col}:')
         print(
