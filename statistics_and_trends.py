@@ -91,7 +91,7 @@ def preprocessing(df):
 
 
 def writing(moments, col):
-    "Prints the statistical moments and interpretation for the selected column."
+"Prints the statistical moments and interpretation for the selected column."
     if None not in moments:
         print(f'For the attribute {col}:')
         print(
