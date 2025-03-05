@@ -1,3 +1,5 @@
+
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.stats as ss
@@ -95,7 +97,7 @@ def writing(moments, col):
 
 def main():
     try:
-        df = pd.read_csv('data.csv')
+        df = pd.read_csv('data.csv')  # Ensure the file is in the same directory as the script
         df = preprocessing(df)
         col = 'vote_average'  # Selected column for statistical analysis
         plot_relational_plot(df)
