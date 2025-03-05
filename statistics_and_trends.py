@@ -3,9 +3,8 @@ import pandas as pd
 import scipy.stats as ss
 import seaborn as sns
 
-def plot_relational_plot(df):
 
-    
+def plot_relational_plot(df):
     """Creates a scatter plot showing the relationship between vote_count and vote_average."""
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -62,7 +61,7 @@ def plot_statistical_plot(df):
         print("Error: Required column for statistical plot not found.")
 
     return
-    
+
 
 def statistical_analysis(df, col: str):
     """Computes the four main statistical moments for the given column."""
@@ -74,9 +73,8 @@ def statistical_analysis(df, col: str):
         return mean, stddev, skew, excess_kurtosis
     else:
         print(f"Error: Column {col} not found in the dataset.")
-
-        
         return None, None, None, None
+
 
 def preprocessing(df):
     """Preprocesses the dataset by displaying summary statistics and handling missing values."""
@@ -84,10 +82,9 @@ def preprocessing(df):
     print(numeric_df.describe())
     print(numeric_df.head())
     print(numeric_df.corr())
-    
     df = df.dropna()  # Remove rows with missing values
-
     return df
+
 
 def writing(moments, col):
     """Prints the statistical moments and interpretation for the selected column."""
@@ -110,8 +107,8 @@ def writing(moments, col):
             ("platykurtic" if moments[3] < 0 else "mesokurtic")
         )
         print(f'The data was {skew_desc} and {kurtosis_desc}.')
-
     return
+
 
 def main():
     try:
@@ -130,8 +127,8 @@ def main():
         )
     except Exception as e:
         print(f"Unexpected error: {e}")
-
     return
+
 
 if __name__ == '__main__':
     main()
