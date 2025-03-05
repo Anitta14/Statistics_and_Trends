@@ -32,12 +32,12 @@ def plot_categorical_plot(df):
 
 def plot_statistical_plot(df):
  "Creates a box plot for vote_average to analyze its distribution."
-    fig, ax = plt.subplots()
-    sns.boxplot(x=df['vote_average'], ax=ax)
-    ax.set_xlabel("Vote Average")
-    ax.set_title("Box Plot: Vote Average Distribution")
-    plt.savefig('statistical_plot.png')
-    return
+fig, ax = plt.subplots()
+sns.boxplot(x=df['vote_average'], ax=ax)
+ax.set_xlabel("Vote Average")
+ax.set_title("Box Plot: Vote Average Distribution")
+plt.savefig('statistical_plot.png')
+return
 
 
 
