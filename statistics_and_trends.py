@@ -76,7 +76,7 @@ def writing(moments, col):
     Prints the statistical moments and interpretation for the selected column.
     """
     print(f'For the attribute {col}:')
-    print(f'Mean = {moments[0]:.2f}, Standard Deviation = {moments[1]:.2f}, ')
+    print(f'Mean = {moments[0]:.2f}, Standard Deviation = {moments[1]:.2f},')
     print(f'Skewness = {moments[2]:.2f}, Excess Kurtosis = {moments[3]:.2f}.')
     skew_desc = "right skewed" if moments[2] > 0 else "left skewed" if moments[2] < 0 else "not skewed"
     kurtosis_desc = "leptokurtic" if moments[3] > 0 else "platykurtic" if moments[3] < 0 else "mesokurtic"
