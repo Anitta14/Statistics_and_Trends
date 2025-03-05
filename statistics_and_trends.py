@@ -1,5 +1,3 @@
-
-
 import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.stats as ss
@@ -8,11 +6,14 @@ import seaborn as sns
 
 def plot_relational_plot(df):
     """
-    Creates a scatter plot showing the relationship between vote_count and vote_average.
+    Creates a scatter plot showing the relationship between
+    vote_count and vote_average.
     """
     fig, ax = plt.subplots()
     if 'vote_count' in df.columns and 'vote_average' in df.columns:
-        sns.scatterplot(x=df['vote_count'], y=df['vote_average'], alpha=0.5, ax=ax)
+        sns.scatterplot(
+            x=df['vote_count'], y=df['vote_average'], alpha=0.5, ax=ax
+        )
         ax.set_xlabel("Vote Count")
         ax.set_ylabel("Vote Average")
         ax.set_title("Scatter Plot: Vote Count vs. Vote Average")
@@ -24,11 +25,16 @@ def plot_relational_plot(df):
 
 def plot_categorical_plot(df):
     """
-    Creates a bar plot showing the average vote_average for each original_language.
+    Creates a bar plot showing the average vote_average for
+    each original_language.
     """
     fig, ax = plt.subplots()
     if 'original_language' in df.columns and 'vote_average' in df.columns:
-        lang_avg = df.groupby('original_language')['vote_average'].mean().sort_values()
+        lang_avg = (
+            df.groupby('original_language')['vote_average']
+            .mean()
+            .sort_values()
+        )
         lang_avg.plot(kind='bar', ax=ax)
         ax.set_xlabel("Original Language")
         ax.set_ylabel("Average Vote")
@@ -72,7 +78,8 @@ def statistical_analysis(df, col: str):
 
 def preprocessing(df):
     """
-    Preprocesses the dataset by displaying summary statistics and handling missing values.
+    Preprocesses the dataset by displaying summary statistics
+    and handling missing values.
     """
     print(df.describe())
     print(df.head())
@@ -83,21 +90,34 @@ def preprocessing(df):
 
 def writing(moments, col):
     """
-    Prints the statistical moments and interpretation for the selected column.
+    Prints the statistical moments and interpretation
+    for the selected column.
     """
     if None not in moments:
         print(f'For the attribute {col}:')
-        print(f'Mean = {moments[0]:.2f}, Standard Deviation = {moments[1]:.2f},')
-        print(f'Skewness = {moments[2]:.2f}, Excess Kurtosis = {moments[3]:.2f}.')
-        skew_desc = "right skewed" if moments[2] > 0 else "left skewed" if moments[2] < 0 else "not skewed"
-        kurtosis_desc = "leptokurtic" if moments[3] > 0 else "platykurtic" if moments[3] < 0 else "mesokurtic"
+        print(
+            f'Mean = {moments[0]:.2f}, '
+            f'Standard Deviation = {moments[1]:.2f},'
+        )
+        print(
+            f'Skewness = {moments[2]:.2f}, '
+            f'Excess Kurtosis = {moments[3]:.2f}.'
+        )
+        skew_desc = (
+            "right skewed" if moments[2] > 0 else
+            ("left skewed" if moments[2] < 0 else "not skewed")
+        )
+        kurtosis_desc = (
+            "leptokurtic" if moments[3] > 0 else
+            ("platykurtic" if moments[3] < 0 else "mesokurtic")
+        )
         print(f'The data was {skew_desc} and {kurtosis_desc}.')
     return
 
 
 def main():
     try:
-        df = pd.read_csv('data.csv')  # Ensure the file is in the same directory as the script
+        df = pd.read_csv('data.csv')
         df = preprocessing(df)
         col = 'vote_average'  # Selected column for statistical analysis
         plot_relational_plot(df)
@@ -106,7 +126,10 @@ def main():
         moments = statistical_analysis(df, col)
         writing(moments, col)
     except FileNotFoundError:
-        print("Error: The file 'data.csv' was not found. Please ensure it is in the correct directory.")
+        print(
+            "Error: The file 'data.csv' was not found. Please ensure "
+            "it is in the correct directory."
+        )
     except Exception as e:
         print(f"Unexpected error: {e}")
     return
