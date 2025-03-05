@@ -5,6 +5,7 @@ import seaborn as sns
 
 def plot_relational_plot(df):
 
+    
     """Creates a scatter plot showing the relationship between vote_count and vote_average."""
     fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -46,6 +47,7 @@ def plot_categorical_plot(df):
 
     return
 
+
 def plot_statistical_plot(df):
     """Creates a box plot for vote_average to analyze its distribution."""
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -60,6 +62,7 @@ def plot_statistical_plot(df):
         print("Error: Required column for statistical plot not found.")
 
     return
+    
 
 def statistical_analysis(df, col: str):
     """Computes the four main statistical moments for the given column."""
@@ -71,6 +74,8 @@ def statistical_analysis(df, col: str):
         return mean, stddev, skew, excess_kurtosis
     else:
         print(f"Error: Column {col} not found in the dataset.")
+
+        
         return None, None, None, None
 
 def preprocessing(df):
@@ -79,6 +84,7 @@ def preprocessing(df):
     print(numeric_df.describe())
     print(numeric_df.head())
     print(numeric_df.corr())
+    
     df = df.dropna()  # Remove rows with missing values
 
     return df
