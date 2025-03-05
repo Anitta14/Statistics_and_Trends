@@ -14,7 +14,8 @@ def plot_relational_plot(df):
         )
         ax.set_xlabel("Vote Count", fontsize=12)
         ax.set_ylabel("Vote Average", fontsize=12)
-        ax.set_title("Scatter Plot: Vote Count vs. Vote Average", fontsize=14)
+        ax.set_title("Scatter Plot: Vote Count vs. Vote Average",
+                     fontsize=14)
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
         plt.savefig('relational_plot.png')
@@ -37,7 +38,8 @@ def plot_categorical_plot(df):
         lang_avg.plot(kind='bar', ax=ax)
         ax.set_xlabel("Original Language", fontsize=12)
         ax.set_ylabel("Average Vote", fontsize=12)
-        ax.set_title("Average Vote by Original Language", fontsize=14)
+        ax.set_title("Average Vote by Original Language",
+                     fontsize=14)
         plt.xticks(rotation=45, ha='right')
         plt.tight_layout()
         plt.savefig('categorical_plot.png')
@@ -54,7 +56,8 @@ def plot_statistical_plot(df):
     if 'vote_average' in df.columns:
         sns.boxplot(x=df['vote_average'], ax=ax)
         ax.set_xlabel("Vote Average", fontsize=12)
-        ax.set_title("Box Plot: Vote Average Distribution", fontsize=14)
+        ax.set_title("Box Plot: Vote Average Distribution",
+                     fontsize=14)
         plt.tight_layout()
         plt.savefig('statistical_plot.png')
     else:
